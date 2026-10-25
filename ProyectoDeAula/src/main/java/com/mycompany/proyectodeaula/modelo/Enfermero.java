@@ -5,6 +5,7 @@
 package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +15,15 @@ import java.util.List;
 public class Enfermero extends Empleado{
     
    private String turno;
+   private List<Triaje> triajes = new ArrayList<>();
 
-    
+    public Enfermero(int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
+        super(idEmpleado, cargo, nombre, apellido, id, fechanacimiento);
+        this.turno = turno;
+        this.triajes = new ArrayList<>();
+    }
+   
+   
    
    
 }
