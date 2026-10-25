@@ -17,6 +17,6 @@ public class HistoriaClinica {
     private LocalDate fechaApertura;
     private String antecedentesMedicos;
     private String alergias;
-    private List triaje;
+    private List<Triaje> triaje;
     
 }
