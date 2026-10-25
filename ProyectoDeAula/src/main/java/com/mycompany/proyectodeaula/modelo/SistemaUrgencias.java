@@ -10,4 +10,6 @@ package com.mycompany.proyectodeaula.modelo;
  */
 public class SistemaUrgencias {
     
+    private String nombreHospital;
+    
 }
