@@ -10,4 +10,8 @@ package com.mycompany.proyectodeaula.modelo;
  */
 public class Medico {
     
+    private String numeroColegiado;
+    private int experiencia;
+    
+    
 }
