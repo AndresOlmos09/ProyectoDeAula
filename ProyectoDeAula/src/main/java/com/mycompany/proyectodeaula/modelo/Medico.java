@@ -18,7 +18,7 @@ public class Medico extends Empleado{
 
     
     //Constructor
-    public Medico(String numeroColegiado, int experiencia, List consultas, int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
+    public Medico(String numeroColegiado, int experiencia, int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
         super(idEmpleado, cargo, nombre, apellido, id, fechanacimiento);
         this.numeroColegiado = numeroColegiado;
         this.experiencia = experiencia;
