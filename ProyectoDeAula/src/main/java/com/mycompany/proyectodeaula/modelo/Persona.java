@@ -6,7 +6,7 @@ package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
 import java.util.Date;
-
+    
 /**
  *
  * @author MI EQUIPO
