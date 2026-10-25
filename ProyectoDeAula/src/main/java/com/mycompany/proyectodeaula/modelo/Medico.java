@@ -17,6 +17,7 @@ public class Medico extends Empleado{
     private String numeroColegiado;
     private int experiencia;
     private List<Consulta> consultas;
+    private Especialidad especialidad;
 
     
     //Constructor
@@ -29,6 +30,15 @@ public class Medico extends Empleado{
     
     
     //Getters Y Setters
+    
+    public Especialidad getEspecialidad() {
+    return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+    this.especialidad = especialidad;
+    }
+    
     public String getNumeroColegiado() {
         return numeroColegiado;
     }
@@ -45,11 +55,11 @@ public class Medico extends Empleado{
         this.experiencia = experiencia;
     }
 
-    public List getConsultas() {
+    public List<Consulta> getConsultas() {
         return consultas;
     }
 
-    public void setConsultas(List consultas) {
+    public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
     }
     
