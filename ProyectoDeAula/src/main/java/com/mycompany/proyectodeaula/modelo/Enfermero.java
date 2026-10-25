@@ -4,10 +4,20 @@
  */
 package com.mycompany.proyectodeaula.modelo;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  *
  * @author ASUS
  */
-public class Enfermero {
+public class Enfermero extends Empleado{
     
+   private String turno;
+
+    public Enfermero(int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
+        super(idEmpleado, cargo, nombre, apellido, id, fechanacimiento);
+    }
+   
+   
 }
