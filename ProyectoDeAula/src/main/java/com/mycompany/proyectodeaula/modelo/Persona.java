@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectodeaula.modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -14,14 +15,16 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String id;
-    private Date fechanacimiento;
+    private LocalDate fechanacimiento;
 
-    public Persona(String nombre, String apellido, String id, Date fechanacimiento) {
+    public Persona(String nombre, String apellido, String id, LocalDate fechanacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
         this.fechanacimiento = fechanacimiento;
     }
+
+   
 
     public String getNombre() {
         return nombre;
@@ -47,13 +50,17 @@ public class Persona {
         this.id = id;
     }
 
-    public Date getFechanacimiento() {
+    public LocalDate getFechanacimiento() {
         return fechanacimiento;
     }
 
-    public void setFechanacimiento(Date fechanacimiento) {
+    public void setFechanacimiento(LocalDate fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
+
+   public int calcularEdad(){
+       return java.time.Period.between(fechanacimiento, LocalDate.now()).getYears();
+   }
     
     
     
