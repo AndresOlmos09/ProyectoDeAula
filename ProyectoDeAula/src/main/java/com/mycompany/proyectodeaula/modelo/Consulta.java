@@ -74,10 +74,12 @@ public class Consulta {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-    
      
-    public String cerrarConsulta(){
-        return "Fecha";
+    public String cerrarConsulta(String tratamiento, String diagnostico){
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+        this.estado = "Cerrada"; 
         
+        return "Consulta cerrada. Diagnóstico: " + diagnostico + ". Tratamiento: " + tratamiento;
     }
 }
