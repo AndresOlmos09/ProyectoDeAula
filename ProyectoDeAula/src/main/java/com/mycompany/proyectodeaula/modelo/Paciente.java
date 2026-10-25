@@ -12,6 +12,55 @@ public class Paciente {
     private int numeroHistoriaClinica;
     private String tipoSangre;
     private String contactoEmergencia;
+    private HistoriaClinica historiaClinica;
+
+    public Paciente(int numeroHistoriaClinica, String tipoSangre, String contactoEmergencia, HistoriaClinica historiaClinica) {
+        this.numeroHistoriaClinica = numeroHistoriaClinica;
+        this.tipoSangre = tipoSangre;
+        this.contactoEmergencia = contactoEmergencia;
+        this.historiaClinica = historiaClinica;
+    }
+
+    public int getNumeroHistoriaClinica() {
+        return numeroHistoriaClinica;
+    }
+
+    public void setNumeroHistoriaClinica(int numeroHistoriaClinica) {
+        this.numeroHistoriaClinica = numeroHistoriaClinica;
+    }
+
+    public String getTipoSangre() {
+        return tipoSangre;
+    }
+
+    public void setTipoSangre(String tipoSangre) {
+        this.tipoSangre = tipoSangre;
+    }
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
+    }
+
+    public HistoriaClinica getHistoriaClinica() {
+        return historiaClinica;
+    }
+
+    public void setHistoriaClinica(HistoriaClinica historiaClinica) {
+        this.historiaClinica = historiaClinica;
+    }
+    
+    public String generarFicha(){
+    GeneradorFichaMedica generador = new GeneradorFichaMedica();
+    return generador.generarFicha(this);
+}
+    
+    
+    
+    
  
             
 }
