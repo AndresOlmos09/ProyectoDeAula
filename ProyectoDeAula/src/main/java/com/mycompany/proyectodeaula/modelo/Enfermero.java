@@ -22,7 +22,25 @@ public class Enfermero extends Empleado{
         this.turno = turno;
         this.triajes = new ArrayList<>();
     }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public List<Triaje> getTriajes() {
+        return triajes;
+    }
+
+    public void setTriajes(List<Triaje> triajes) {
+        this.triajes = triajes;
+    }
    
+    
+    
    
    
    
