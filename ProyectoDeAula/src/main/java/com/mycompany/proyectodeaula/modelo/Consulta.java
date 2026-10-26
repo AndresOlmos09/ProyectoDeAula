@@ -17,7 +17,12 @@ public class Consulta {
     private String tratamiento;
     private String estado; 
     private Paciente paciente;
-
+    
+    //se inicializa consulta abierta por defecto porque es una nueva consulta
+    public Consulta(){
+        this.estado = "Consulta Abierta";
+    }
+    
     public Consulta(int idConsulta, LocalDate Fecha, String diagnostico, String tratamiento, String estado, Paciente paciente) {
         this.idConsulta = idConsulta;
         this.Fecha = Fecha;
