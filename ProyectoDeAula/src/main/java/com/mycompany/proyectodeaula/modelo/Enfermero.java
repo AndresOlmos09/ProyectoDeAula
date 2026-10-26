@@ -38,6 +38,11 @@ public class Enfermero extends Empleado{
     public void setTriajes(List<Triaje> triajes) {
         this.triajes = triajes;
     }
+
+    @Override
+    public int calcularEdad() {
+        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
    
     
     

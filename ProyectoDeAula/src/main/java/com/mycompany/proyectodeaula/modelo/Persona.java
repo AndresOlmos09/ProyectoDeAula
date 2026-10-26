@@ -5,13 +5,14 @@
 package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
     
 /**
  *
  * @author MI EQUIPO
  */
-public class Persona {
+public abstract class Persona {
     private String nombre;
     private String apellido;
     private String id;
@@ -58,13 +59,8 @@ public class Persona {
         this.fechanacimiento = fechanacimiento;
     }
 
-   public int calcularEdad(){
-       return java.time.Period.between(fechanacimiento, LocalDate.now()).getYears();
-   }
-    
-    
-    
-    
-    
-    
+   public int calcularEdad() {
+        return Period.between(fechanacimiento, LocalDate.now()).getYears();
+    }
+       
 }

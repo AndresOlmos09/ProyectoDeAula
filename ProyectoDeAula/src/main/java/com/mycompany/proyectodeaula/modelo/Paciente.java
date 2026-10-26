@@ -4,30 +4,27 @@
  */
 package com.mycompany.proyectodeaula.modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author MI EQUIPO
  */
-public class Paciente {
-    private int numeroHistoriaClinica;
-    private String tipoSangre;
-    private String contactoEmergencia;
-    private HistoriaClinica historiaClinica;
+public class Paciente extends Persona{
+     private int numeroHistoriaClinica;
+     private String tipoSangre;
+     private String contactoEmergencia;
+     private HistoriaClinica historiaClinica;
 
-    public Paciente(int numeroHistoriaClinica, String tipoSangre, String contactoEmergencia, HistoriaClinica historiaClinica) {
+    public Paciente(int numeroHistoriaClinica, String tipoSangre, String contactoEmergencia, HistoriaClinica historiaClinica, String nombre, String apellido, String id, LocalDate fechanacimiento) {
+        super(nombre, apellido, id, fechanacimiento);
         this.numeroHistoriaClinica = numeroHistoriaClinica;
         this.tipoSangre = tipoSangre;
         this.contactoEmergencia = contactoEmergencia;
         this.historiaClinica = historiaClinica;
     }
 
-    public int getNumeroHistoriaClinica() {
-        return numeroHistoriaClinica;
-    }
-
-    public void setNumeroHistoriaClinica(int numeroHistoriaClinica) {
-        this.numeroHistoriaClinica = numeroHistoriaClinica;
-    }
+    
 
     public String getTipoSangre() {
         return tipoSangre;
@@ -52,15 +49,27 @@ public class Paciente {
     public void setHistoriaClinica(HistoriaClinica historiaClinica) {
         this.historiaClinica = historiaClinica;
     }
+
+    public int getNumeroHistoriaClinica() {
+        return numeroHistoriaClinica;
+    }
+
+    public void setNumeroHistoriaClinica(int numeroHistoriaClinica) {
+        this.numeroHistoriaClinica = numeroHistoriaClinica;
+    }
     
-    public String generarFicha(){
-    GeneradorFichaMedica generador = new GeneradorFichaMedica();
-    return generador.generarFicha(this);
-}
     
+     
+       public String generarFicha(){
+        GeneradorFichaMedica generador = new GeneradorFichaMedica();
+        return generador.generarFicha(this);
+       }
+
+    @Override
+    public int calcularEdad() {
+        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
     
-    
-    
- 
-            
+       
+     
 }

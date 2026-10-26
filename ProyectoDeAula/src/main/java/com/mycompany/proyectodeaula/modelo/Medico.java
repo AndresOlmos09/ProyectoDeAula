@@ -62,6 +62,11 @@ public class Medico extends Empleado{
     public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
     }
+
+    @Override
+    public int calcularEdad() {
+        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
     
     
     
