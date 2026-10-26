@@ -5,6 +5,7 @@
 package com.mycompany.proyectodeaula.modelo;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class SistemaUrgencias {
     private List<Paciente> pacientes;
     private List<Empleado> empleados;
     private List<Especialidad> especialidades;
+
 
     //Constructores
     public SistemaUrgencias(){
@@ -82,6 +84,18 @@ public class SistemaUrgencias {
     public List<Especialidad> getEspecialidades() {
         return especialidades;
     }
+
+
+    public SistemaUrgencias(String nombreHospital, List<Paciente> pacientes, List<Empleado> empleados, List<Especialidad> especialidades) {
+        this.nombreHospital = nombreHospital;
+        this.pacientes = pacientes;
+        this.empleados = empleados;
+        this.especialidades = especialidades;
+    }
+
+  
+  }
     
     
-}
+    
+
