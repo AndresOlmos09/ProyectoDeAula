@@ -84,18 +84,4 @@ public class SistemaUrgencias {
     public List<Especialidad> getEspecialidades() {
         return especialidades;
     }
-
-
-    public SistemaUrgencias(String nombreHospital, List<Paciente> pacientes, List<Empleado> empleados, List<Especialidad> especialidades) {
-        this.nombreHospital = nombreHospital;
-        this.pacientes = pacientes;
-        this.empleados = empleados;
-        this.especialidades = especialidades;
-    }
-
-  
-  }
-    
-    
-    
-
+}
