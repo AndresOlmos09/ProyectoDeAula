@@ -17,7 +17,11 @@ public class Especialidad {
     private String nombreEspecialidad;
     private String descripcion;
     private List<Medico> medicos;
-
+    
+    public Especialidad(){
+        this.medicos = new ArrayList<>();
+    }
+    
     public Especialidad(String nombreEspecialidad, String descripcion) {
         this.nombreEspecialidad = nombreEspecialidad;
         this.descripcion = descripcion;

@@ -82,4 +82,11 @@ public class Consulta {
         
         return "Consulta cerrada. Diagnóstico: " + diagnostico + ". Tratamiento: " + tratamiento;
     }
+
+    @Override
+    public String toString() {
+        return "Consulta{" + "idConsulta=" + idConsulta + ", Fecha=" + Fecha + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", estado=" + estado + ", paciente=" + paciente + '}';
+    }
+    
+    
 }
