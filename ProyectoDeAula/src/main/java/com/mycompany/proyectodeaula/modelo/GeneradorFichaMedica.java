@@ -15,12 +15,13 @@ public class GeneradorFichaMedica {
     
     
     public String generarFicha(Paciente p){
-        return "Ficha médica del paciente\n"  
-                + "Número de historia clínica: " 
+        return  "Número de historia clínica: " 
                 + p.getNumeroHistoriaClinica() + "\n"
+                + "Nombre: " +p.getNombre()+" " +p.getApellido()+ "\n"
+                + "Id: " +p.getId()+ "\n"
+                + "Edad: " + p.calcularEdad()+ " años\n"
                 + "Tipo de sangre: " + p.getTipoSangre() + "\n"
-                + "Contacto de emergencia: "
-                + p.getContactoEmergencia();
+                + "Contacto de emergencia: "+ p.getContactoEmergencia();
     }
         
 }

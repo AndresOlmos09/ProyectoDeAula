@@ -91,7 +91,12 @@ public class Triaje {
 
     @Override
     public String toString() {
-        return "Triaje{" + "idTriaje=" + idTriaje + ", fechaHora=" + fechaHora + ", sintomasReportados=" + sintomasReportados + ", nivelUrgencia=" + nivelUrgencia + ", presionArterial=" + presionArterial + ", temperatura=" + temperatura + ", frecuenciaCardiaca=" + frecuenciaCardiaca + '}';
+        return "Triaje #" + idTriaje + "\n" 
+                + "Nivel de Urgencia: " + nivelUrgencia + "\n" 
+                + "Síntomas: " + sintomasReportados + "\n" 
+                + "Presion Arterial: " + presionArterial + "\n" 
+                + "Temperatura: " + temperatura + " °C" + "\n" 
+                + "Frecuencia Cardíaca: " + frecuenciaCardiaca + " lpm";
     }
     
     public boolean esUrgente() {

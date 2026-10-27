@@ -64,8 +64,10 @@ public class ProyectoDeAula {
  
         System.out.println("\n--- Triaje ---");
         System.out.println(triaje);
-        System.out.println("¿Es urgente? " + triaje.esUrgente());
-        System.out.println("Nivel: " + triaje.getNivelUrgencia().getDescripcion());
+        System.out.println("¿Es urgente? ");
+        if(triaje.esUrgente()){
+            System.out.println("Nivel: " + triaje.getNivelUrgencia().getDescripcion());
+        }        
  
         System.out.println("\n--- Consulta ---");
         System.out.println("Estado antes: " + consulta.getEstado());

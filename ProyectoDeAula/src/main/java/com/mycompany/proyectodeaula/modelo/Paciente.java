@@ -5,6 +5,7 @@
 package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -67,7 +68,7 @@ public class Paciente extends Persona{
 
     @Override
     public int calcularEdad() {
-        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return Period.between(getFechanacimiento(), LocalDate.now()).getYears();
     }
     
        
