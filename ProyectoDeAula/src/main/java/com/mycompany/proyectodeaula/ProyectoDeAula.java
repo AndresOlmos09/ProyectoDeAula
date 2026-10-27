@@ -50,7 +50,7 @@ public class ProyectoDeAula {
         sistema.registrarPaciente(paciente);
  
         Triaje triaje = new Triaje(1, LocalDate.now(), "Dolor al orinar",
-            NivelUrgencia.NARANJA, "120/80", 37.2, 78);
+            NivelUrgencia.AMARILLO, "120/80", 39.2, 83);
         paciente.getHistoriaClinica().addTriaje(triaje);
         enfermero.getTriajes().add(triaje);
  
@@ -70,11 +70,10 @@ public class ProyectoDeAula {
         }        
  
         System.out.println("\n--- Consulta ---");
-        System.out.println("Estado antes: " + consulta.getEstado());
 
-        String resultado = consulta.cerrarConsulta("Nebulización y reposo", "Crisis asmática");
+        String resultado = consulta.cerrarConsulta("Antibióticos recetados", "Infección urinaria con fiebre");
         System.out.println(resultado);
-        System.out.println("Estado después: " + consulta.getEstado());
+        System.out.println("Estado consulta: " + consulta.getEstado());
  
         System.out.println("\n--- Personas del hospital ---");
         List<Persona> personas = new ArrayList<>();
