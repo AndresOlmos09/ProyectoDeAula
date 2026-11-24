@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectodeaula.modelo;
 
+import com.mycompany.proyectodeaula.utilidades.EstadoConsulta;
 import java.time.LocalDate;
 
 /**
@@ -12,24 +13,28 @@ import java.time.LocalDate;
  */
 public class Consulta {
     private int idConsulta;
-    private LocalDate Fecha;
+    private LocalDate fecha;
     private String diagnostico;
     private String tratamiento;
-    private String estado; 
+    private EstadoConsulta estado; 
     private Paciente paciente;
+    private Medico medico;
+    private Triaje triaje;
+    private HistoriaClinica historiaClinica;
     
     //se inicializa consulta abierta por defecto porque es una nueva consulta
-    public Consulta(){
-        this.estado = "Consulta Abierta";
+    public Consulta() {
+        this.estado = EstadoConsulta.ABIERTA;
     }
     
-    public Consulta(int idConsulta, LocalDate Fecha, String diagnostico, String tratamiento, String estado, Paciente paciente) {
+    public Consulta(int idConsulta, LocalDate fecha, Paciente paciente, Triaje triaje) {
         this.idConsulta = idConsulta;
-        this.Fecha = Fecha;
-        this.diagnostico = diagnostico;
-        this.tratamiento = tratamiento;
-        this.estado = estado;
+        this.fecha = fecha;
         this.paciente = paciente;
+        this.triaje = triaje;
+        this.estado = EstadoConsulta.ABIERTA;
+        this.historiaClinica = paciente.getHistoriaClinica();
+        this.historiaClinica.addConsulta(this);
     }
 
     public int getIdConsulta() {
@@ -41,35 +46,23 @@ public class Consulta {
     }
 
     public LocalDate getFecha() {
-        return Fecha;
+        return fecha;
     }
 
     public void setFecha(LocalDate Fecha) {
-        this.Fecha = Fecha;
+        this.fecha = Fecha;
     }
 
     public String getDiagnostico() {
         return diagnostico;
     }
 
-    public void setDiagnostico(String diagnostico) {
-        this.diagnostico = diagnostico;
-    }
-
     public String getTratamiento() {
         return tratamiento;
     }
 
-    public void setTratamiento(String tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-
-    public String getEstado() {
+    public EstadoConsulta getEstado() {
         return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Paciente getPaciente() {
@@ -79,19 +72,66 @@ public class Consulta {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-     
-    public String cerrarConsulta(String tratamiento, String diagnostico){
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Triaje getTriaje() {
+        return triaje;
+    }
+
+    public HistoriaClinica getHistoriaClinica() {
+        return historiaClinica;
+    }
+    
+    public void asignarMedico(Medico medico) {
+        this.medico = medico;
+        medico.addConsultas(this);
+    } 
+    
+    public void registrarDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+    
+    public void registrarDiagnostico(String diagnostico, String tratamiento) {
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
-        this.estado = "Cerrada"; 
-        
-        return "Consulta cerrada. Diagnóstico: " + diagnostico + ". Tratamiento: " + tratamiento;
+    }
+    
+    public String cerrarConsulta() {
+        if (diagnostico == null || diagnostico.isEmpty()) {
+            return "No se puede cerrar la consulta sin diagnóstico";
+        }
+        this.estado = EstadoConsulta.CERRADA;
+        String t;
+        if(tratamiento == null || tratamiento.isEmpty()){
+            t = "Sin tratamiento";
+        }else{
+            t = tratamiento;
+        } 
+        return "Consulta cerrada. Diagnóstico: " + diagnostico + ". Tratamiento: " + t;
+    }
+    
+    public String cerrarConsulta(String diagnostico) {
+        registrarDiagnostico(diagnostico);
+        return cerrarConsulta();
+    }
+    
+    public String cerrarConsulta(String diagnostico, String tratamiento) {
+        registrarDiagnostico(diagnostico, tratamiento);
+        return cerrarConsulta();
     }
 
     @Override
     public String toString() {
-        return "Consulta{" + "idConsulta=" + idConsulta + ", Fecha=" + Fecha + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", estado=" + estado + ", paciente=" + paciente + '}';
+        String nombrePaciente;
+        if(paciente != null){
+           nombrePaciente = paciente.nombreCompleto();
+        }else{
+            nombrePaciente = "Sin paciente";
+        }
+        return "Consulta: " + idConsulta + "\nFecha: " + fecha + "\nPaciente: " + nombrePaciente
+                + "\nEstado: " + estado.getDescripcion();
     }
-    
-    
 }

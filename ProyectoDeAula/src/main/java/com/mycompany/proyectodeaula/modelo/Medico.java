@@ -6,6 +6,7 @@ package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,6 +20,9 @@ public class Medico extends Empleado{
     private List<Consulta> consultas;
     private Especialidad especialidad;
 
+    public Medico() {
+        this.consultas = new ArrayList<>();
+    }
     
     //Constructor
     public Medico(String numeroColegiado, int experiencia, int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
@@ -56,21 +60,31 @@ public class Medico extends Empleado{
     }
 
     public List<Consulta> getConsultas() {
-        return consultas;
+        return Collections.unmodifiableList(consultas);
     }
-
-    public void setConsultas(List<Consulta> consultas) {
-        this.consultas = consultas;
+    
+    public void addConsultas(Consulta c){
+        if(!consultas.contains(c)){
+            consultas.add(c);
+        }
     }
 
     @Override
-    public int calcularEdad() {
-        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    public String obtenerRol() {
+        return "Medico";
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public String mostrarResumen() {
+        String esp;
+        if(especialidad != null) {
+            esp = especialidad.getNombreEspecialidad();
+        }else {
+            esp = "Sin especialidad";
+        }
+        
+        return "Dr " + nombreCompleto() + "\nColegiado: " + numeroColegiado+ "\nEspecialidad: " + esp
+                + "\nConsultas: " + consultas.size();
+    }
+  
 }

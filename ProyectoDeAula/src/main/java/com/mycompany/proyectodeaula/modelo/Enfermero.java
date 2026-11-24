@@ -4,8 +4,10 @@
  */
 package com.mycompany.proyectodeaula.modelo;
 
+import com.mycompany.proyectodeaula.utilidades.TurnoEnfermero;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,39 +16,50 @@ import java.util.List;
  */
 public class Enfermero extends Empleado{
     
-   private String turno;
+   private TurnoEnfermero turno;
    private List<Triaje> triajes = new ArrayList<>();
+
+    public Enfermero() {
+        this.triajes = new ArrayList<>();
+    }
    
-    public Enfermero(int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento, String turno) {
+    public Enfermero(int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento, TurnoEnfermero turno) {
         super(idEmpleado, cargo, nombre, apellido, id, fechanacimiento);
         this.turno = turno;
         this.triajes = new ArrayList<>();
     }
 
-    public String getTurno() {
+    public TurnoEnfermero getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(TurnoEnfermero turno) {
         this.turno = turno;
     }
 
     public List<Triaje> getTriajes() {
-        return triajes;
+        return Collections.unmodifiableList(triajes);
     }
 
-    public void setTriajes(List<Triaje> triajes) {
-        this.triajes = triajes;
+    public void addTriaje(Triaje t) {
+        triajes.add(t);
     }
 
     @Override
-    public int calcularEdad() {
-        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    public String obtenerRol(){
+        return "Enfermero";
     }
-   
+
+    @Override
+    public String mostrarResumen() {
+        String t;
+        if(turno != null) {
+            t = turno.getDescripcion();
+        }else {
+            t = "Sin turno";
+        }
+        
+        return "Enfermero(a) " + nombreCompleto() + "\nTurno: " + t + "\nTriajes realizados: " + triajes.size();
+    }
     
-    
-   
-   
-   
 }

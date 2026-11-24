@@ -5,7 +5,6 @@
 package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 /**
  *
@@ -17,15 +16,17 @@ public class Paciente extends Persona{
      private String contactoEmergencia;
      private HistoriaClinica historiaClinica;
 
-    public Paciente(int numeroHistoriaClinica, String tipoSangre, String contactoEmergencia, HistoriaClinica historiaClinica, String nombre, String apellido, String id, LocalDate fechanacimiento) {
+    public Paciente() {
+        this.historiaClinica = new HistoriaClinica();
+    }
+    
+    public Paciente(int numeroHistoriaClinica, String tipoSangre, String contactoEmergencia, String nombre, String apellido, String id, LocalDate fechanacimiento) {
         super(nombre, apellido, id, fechanacimiento);
         this.numeroHistoriaClinica = numeroHistoriaClinica;
         this.tipoSangre = tipoSangre;
         this.contactoEmergencia = contactoEmergencia;
-        this.historiaClinica = historiaClinica;
+        this.historiaClinica =  new HistoriaClinica(numeroHistoriaClinica, LocalDate.now(), "", "");
     }
-
-    
 
     public String getTipoSangre() {
         return tipoSangre;
@@ -47,10 +48,6 @@ public class Paciente extends Persona{
         return historiaClinica;
     }
 
-    public void setHistoriaClinica(HistoriaClinica historiaClinica) {
-        this.historiaClinica = historiaClinica;
-    }
-
     public int getNumeroHistoriaClinica() {
         return numeroHistoriaClinica;
     }
@@ -58,17 +55,21 @@ public class Paciente extends Persona{
     public void setNumeroHistoriaClinica(int numeroHistoriaClinica) {
         this.numeroHistoriaClinica = numeroHistoriaClinica;
     }
-    
-    
-     
-       public String generarFicha(){
+       
+    public String generarFicha(){
         GeneradorFichaMedica generador = new GeneradorFichaMedica();
         return generador.generarFicha(this);
        }
 
     @Override
-    public int calcularEdad() {
-        return Period.between(getFechanacimiento(), LocalDate.now()).getYears();
+    public String obtenerRol() {
+        return "Paciente";
+    }
+
+    @Override
+    public String mostrarResumen() {
+        return "Paciente " + nombreCompleto() + "\nHistoria N° " + numeroHistoriaClinica + "\nSangre: " + tipoSangre
+            + "\nTriajes: " + historiaClinica.getTriaje().size();
     }
     
        

@@ -6,6 +6,7 @@ package com.mycompany.proyectodeaula.modelo;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -45,15 +46,12 @@ public class Especialidad {
     }
 
     public List<Medico> getMedicos() {
-        return medicos;
-    }
-
-    public void setMedicos(List<Medico> medicos) {
-        this.medicos = medicos;
+        return Collections.unmodifiableList(medicos);
     }
     
     public void addMedico(Medico m) {
         medicos.add(m);
+        m.setEspecialidad(this);
     }
 
     public Medico getMedicoByNumeroColegiado(String nc) {
@@ -64,10 +62,5 @@ public class Especialidad {
         }
         return null;
     }
-
-    public List<Medico> getMedicosList() {
-        return medicos;
-    }
-    
-    
+   
 }

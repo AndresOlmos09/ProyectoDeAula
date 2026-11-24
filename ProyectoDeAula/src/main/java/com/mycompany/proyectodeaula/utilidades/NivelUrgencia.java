@@ -10,7 +10,6 @@ package com.mycompany.proyectodeaula.utilidades;
  */
 public enum NivelUrgencia {
     ROJO("Atención inmediata"),
-    NARANJA("Muy urgente"),
     AMARILLO("Urgente"),
     VERDE("No urgente");
     

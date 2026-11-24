@@ -32,6 +32,16 @@ public class Triaje {
         this.temperatura = temperatura;
         this.frecuenciaCardiaca = frecuenciaCardiaca;
     }
+    
+    public Triaje(int idTriaje, LocalDate fechaHora, String sintomasReportados, String presionArterial, double temperatura, int frecuenciaCardiaca) {
+        this.idTriaje = idTriaje;
+        this.fechaHora = fechaHora;
+        this.sintomasReportados = sintomasReportados;
+        this.presionArterial = presionArterial;
+        this.temperatura = temperatura;
+        this.frecuenciaCardiaca = frecuenciaCardiaca;
+        clasificarUrgencia();
+    }
 
     public int getIdTriaje() {
         return idTriaje;
@@ -88,6 +98,17 @@ public class Triaje {
     public void setFrecuenciaCardiaca(int frecuenciaCardiaca) {
         this.frecuenciaCardiaca = frecuenciaCardiaca;
     }
+    
+    public NivelUrgencia clasificarUrgencia() {
+        if (temperatura >= 39.5 || frecuenciaCardiaca > 120) {
+            nivelUrgencia = NivelUrgencia.ROJO;
+        } else if (temperatura >= 38.0 || frecuenciaCardiaca > 100) {
+            nivelUrgencia = NivelUrgencia.AMARILLO;
+        } else {
+            nivelUrgencia = NivelUrgencia.VERDE;
+        }
+        return nivelUrgencia;
+    }
 
     @Override
     public String toString() {
@@ -100,7 +121,7 @@ public class Triaje {
     }
     
     public boolean esUrgente() {
-        return nivelUrgencia == NivelUrgencia.ROJO || nivelUrgencia == NivelUrgencia.NARANJA;
+        return nivelUrgencia == NivelUrgencia.ROJO || nivelUrgencia == NivelUrgencia.AMARILLO;
     }
     
     

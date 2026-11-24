@@ -6,7 +6,6 @@ package com.mycompany.proyectodeaula.modelo;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
     
 /**
  *
@@ -16,16 +15,17 @@ public abstract class Persona {
     private String nombre;
     private String apellido;
     private String id;
-    private LocalDate fechanacimiento;
+    private LocalDate fechaNacimiento;
 
+    public Persona() {
+    }  
+        
     public Persona(String nombre, String apellido, String id, LocalDate fechanacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
-        this.fechanacimiento = fechanacimiento;
-    }
-
-   
+        this.fechaNacimiento = fechanacimiento;
+    }   
 
     public String getNombre() {
         return nombre;
@@ -52,15 +52,32 @@ public abstract class Persona {
     }
 
     public LocalDate getFechanacimiento() {
-        return fechanacimiento;
+        return fechaNacimiento;
     }
 
     public void setFechanacimiento(LocalDate fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
+        this.fechaNacimiento = fechanacimiento;
     }
-
+    
+    public void setFechaNacimiento(int anio, int mes, int dia) {
+        this.fechaNacimiento = LocalDate.of(anio, mes, dia);
+    }
+    
    public int calcularEdad() {
-        return Period.between(fechanacimiento, LocalDate.now()).getYears();
+       try{
+            if(fechaNacimiento == null){
+                throw new RuntimeException("La fecha de nacimiento no está definida");
+            }
+            return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+        }catch(Exception e){
+            throw new RuntimeException("Error al calcular la edad, ", e);
+        }
     }
-       
+   
+    protected String nombreCompleto() {
+        return nombre + " " + apellido;
+    }
+   
+   public abstract String obtenerRol();
+   public abstract String mostrarResumen();   
 }

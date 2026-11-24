@@ -10,11 +10,14 @@ import java.time.LocalDate;
  *
  * @author Usuario
  */
-public class Empleado extends Persona{
+public abstract class Empleado extends Persona{
     
     private int idEmpleado;
     private String cargo;
 
+    public Empleado() {
+    }
+    
     public Empleado(int idEmpleado, String cargo, String nombre, String apellido, String id, LocalDate fechanacimiento) {
         super(nombre, apellido, id, fechanacimiento);
         this.idEmpleado = idEmpleado;
@@ -36,13 +39,5 @@ public class Empleado extends Persona{
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
-    @Override
-    public int calcularEdad() {
-        return super.calcularEdad(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-    
-    
-    
-    
+  
 }
