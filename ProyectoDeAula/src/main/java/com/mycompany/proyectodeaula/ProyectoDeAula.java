@@ -35,6 +35,10 @@ public class ProyectoDeAula {
                 "73574192", LocalDate.of(1976, 4, 8));
         Enfermero enfermera = new Enfermero(246810, "Enfermero jefe", "Ivet", "Arnedo",
                 "45692520", LocalDate.of(1978, 10, 18), TurnoEnfermero.NOCHE);
+        
+        Enfermero enfermera1=new Enfermero(1029, "Enfermero jefe", "Ety", "Contreras","45556758", LocalDate.of(1981,8,26),TurnoEnfermero.MAÑANA);
+        
+        Enfermero enfermera2=new Enfermero(1010, "Enfermero jefe", "Carolina", "Herrera","1029500384", LocalDate.of(2000,1,10),TurnoEnfermero.MAÑANA);
 
         Paciente emily = new Paciente(311, "O+", "Carlos Jaramillo", "Emily", "Iglesias",
                 "1201226337", LocalDate.of(2007, 2, 18));
