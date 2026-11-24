@@ -54,6 +54,8 @@ public class ProyectoDeAula {
         sistema.addEspecialidad(urologia);
         sistema.contratarEmpleado(medico);
         sistema.contratarEmpleado(enfermera);
+        sistema.contratarEmpleado(enfermera1);
+        sistema.contratarEmpleado(enfermera2);
         sistema.registrarPaciente(emily);
         sistema.registrarPaciente(nicoll);
         sistema.registrarPaciente(fernando);
