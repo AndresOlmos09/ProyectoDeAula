@@ -13,6 +13,7 @@ import com.mycompany.proyectodeaula.modelo.Paciente;
 import com.mycompany.proyectodeaula.modelo.Persona;
 import com.mycompany.proyectodeaula.modelo.SistemaUrgencias;
 import com.mycompany.proyectodeaula.modelo.Triaje;
+import com.mycompany.proyectodeaula.modelo.TriajeConcurrencia;
 import com.mycompany.proyectodeaula.utilidades.TurnoEnfermero;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -73,12 +74,10 @@ public class ProyectoDeAula {
 
         List<Paciente> pacientes = new ArrayList<>(sistema.getPacientes());
         List<Triaje> triajes = new ArrayList<>();
-        for (int i = 0; i < pacientes.size(); i++) {
-            Triaje t = pacientes.get(i).getHistoriaClinica().addTriaje(i + 1, LocalDate.now(),
-                    sintomas[i], presiones[i], temperaturas[i], frecuencias[i]);
-            enfermera.addTriaje(t);
-            triajes.add(t);
-        }
+
+        Thread hilo1=new Thread(new TriajeConcurrencia(enfermera, emily, 1, sintomas[0], presiones[0], temperaturas[0], frecuencias[0]));
+        Thread hilo2=new Thread(new TriajeConcurrencia(enfermera1, nicoll, 2, sintomas[1], presiones[1], temperaturas[1], frecuencias[1]));
+        Thread hilo3=new Thread(new TriajeConcurrencia(enfermera2, fernando, 3, sintomas[2], presiones[2], temperaturas[2], frecuencias[2]));
 
         System.out.println("===== " + sistema.getNombreHospital() + " =====");
 
