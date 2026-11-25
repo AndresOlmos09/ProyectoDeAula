@@ -33,7 +33,7 @@ public class TriajeConcurrencia implements Runnable{
     @Override
     public void run() {
         try{
-            System.out.println(enfermero.getNombre() + "inició el triaje de " + paciente.getNombre());
+            System.out.println(enfermero.getNombre() + " inició el triaje de " + paciente.getNombre());
             
             Thread.sleep(3000);
             
@@ -41,7 +41,7 @@ public class TriajeConcurrencia implements Runnable{
             
             enfermero.addTriaje(t);
             
-             System.out.println(enfermero.getNombre() + "finalizo el triaje de " + paciente.getNombre());
+             System.out.println(enfermero.getNombre() + " finalizo el triaje de " + paciente.getNombre());
             
         }catch(InterruptedException e){
             Thread.currentThread().interrupt();

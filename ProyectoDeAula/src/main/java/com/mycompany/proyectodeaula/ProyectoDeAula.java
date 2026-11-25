@@ -78,6 +78,35 @@ public class ProyectoDeAula {
         Thread hilo1=new Thread(new TriajeConcurrencia(enfermera, emily, 1, sintomas[0], presiones[0], temperaturas[0], frecuencias[0]));
         Thread hilo2=new Thread(new TriajeConcurrencia(enfermera1, nicoll, 2, sintomas[1], presiones[1], temperaturas[1], frecuencias[1]));
         Thread hilo3=new Thread(new TriajeConcurrencia(enfermera2, fernando, 3, sintomas[2], presiones[2], temperaturas[2], frecuencias[2]));
+        
+        hilo1.start();
+        hilo2.start();
+        hilo3.start();
+        
+        try{
+        hilo1.join();
+        hilo2.join();
+        hilo3.join();
+        
+        } catch (InterruptedException e){
+        
+            Thread.currentThread().interrupt();
+            System.out.println("Proceso interrumpido");
+            return;
+        }
+        
+        try{
+        
+            for (Paciente p : pacientes){
+                
+                Triaje t = p.getHistoriaClinica().getUltimoTriaje();
+                    triajes.add(t);
+            }
+            
+        }catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         System.out.println("===== " + sistema.getNombreHospital() + " =====");
 
